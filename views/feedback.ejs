@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- header-->
+<% include partials/header.ejs %>
+
+
+  <!--site navigation-->
+  <% include partials/site-navigation.ejs %>
+  <!-- user navigation-->
+  <% include partials/user-navigation.ejs %>
+
+<div class="ver content">
+  <h4><a href="/index">Home</a> > <a href="/categories">Categories </a> > <%= item.ItemName %> > Feedback</h4>
+  <h2><img src="<%= item.ImageURL%>" alt ="electronics"/><B><%= item.CatalogCategory %></B></h2>
+
+              <form action="/profile/update-rating" method="post">
+         <button class="button" type="submit">CONFIRM RATING></button>
+
+           <div class=button>
+         <select name="user-rating"> <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+         </select>
+       </div>
+       <input type="hidden" name="item-code" value="<%= item.ItemCode %>" />
+     </form>
+
+<form action="/profile/update-tested" method="post">
+   <input type="hidden" name="item-code" value="<%= item.ItemCode %>" />
+   <%if (purchasedIt === "yes") {%> <input type="radio" name="purchased-it" value="Yes" checked> Yes  <%}
+   else {%> <input type="radio" name="purchased-it" value="Yes"> Yes  <%} %>
+   <%if (purchasedIt === "No") {%> <input type="radio" name="purchased-it" value="No" checked> No  <%}
+   else {%> <input type="radio" name="purchased-it" value="No"> No  <%} %>
+   <button class="made-it-button" type= "submit" >
+     <i class="checkmark"></i>
+     PURCHASED IT
+   </button>
+ </form>
+
+</div>
+
+<!-- footer-->
+<% include partials/footer.ejs %>
+</body>
+</html>

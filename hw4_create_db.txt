@@ -1,0 +1,151 @@
+
+
+db.itemsData.drop()
+db.userData.drop()
+db.userItemData.drop()
+db.dropDatabase()
+use wallmartCollection
+show dbs
+
+db.createCollection('itemsData');
+db.createCollection('userData');
+db.createCollection('userItemData');
+
+//users database
+db.userData.insertMany([
+{
+  'userId' : 'user001',
+  'firstName' : 'Sravan',
+  'lastName' : 'Pothuraju',
+  'email' : 'sravan@wallmart.com',
+  'password':'sravan@2019',
+  'address1':'9532 university lane',
+  'address2':'apt 13456',
+  'city':'Charlotte',
+  'state':'North Carolina',
+  'zipcode':'28262',
+  'country':'USA'
+},
+{
+'userId' : 'user002',
+'firstName' : 'Bobby',
+'lastName' : 'Kumar',
+'email' : 'bobby@wallmart.com',
+'password':'bobby@2019',
+'address1':'6732 mountain lane',
+'address2':'apt 48956',
+'city':'Los Angeles',
+'state':'California',
+'zipcode':'25682',
+'country':'USA'
+}
+]);
+
+//items database
+db.itemsData.insertMany([
+{
+ItemCode: 'B_001',
+ItemName: "The Odyssey by Homer",
+CatalogCategory: "Books",
+Description: "The Iliad and the Odyssey can be found on every list of the world's greatest books. From the beginning of Western literature, readers have appreciated these two epic poems for their ability to make us reflect on the full range of human concerns and emotions as well as for sheer entertainmen",
+Rating: "0",
+ImageURL: "../resources/images/odyssey.jpg"
+},
+{
+ItemCode: 'B_002',
+ItemName: "Hamlet by William Shakespeare",
+CatalogCategory: "Books",
+Description: "Hamlet is a tragedy by William Shakespeare, believed to have been written between 1599 and 1601. The play, set in Denmark, recounts how Prince Hamlet exacts revenge on his uncle Claudius, who has murdered Hamlet's father, the King, and then taken the throne and married Hamlet's mother",
+Rating: "0",
+ImageURL: "../resources/images/hamlet.jpg"
+},
+{
+ItemCode:'B_003',
+ItemName: "Ulysses by James Joyce",
+CatalogCategory: "Books",
+Description: "Ulysses is a novel by Irish writer James Joyce. It was first serialised in parts in the American journal The Little Review from March 1918 to December 1920, and then published in its entirety by Sylvia Beach in February 1922, in Paris. It is considered to be one of the most important works of Modernist literature, and has been called a demonstration and summation of the entire movement",
+Rating: 0,
+ImageURL: "../resources/images/ulysses.jpeg"
+},
+{
+ItemCode:'E_001',
+ItemName: "Apple Air pods",
+CatalogCategory: "Electronics",
+Description: "Amazingly easy to use, AirPods combine intelligent design with breakthrough technology and crystal clear sound.Get up to 5 hours of listening time on one charge Or up to 3 hours with just a 15-minute charge in the charging case..",
+Rating: 0,
+ImageURL: "../resources/images/Appleairpods.jpg"
+},
+{
+ItemCode: 'E_002',
+ItemName: "Apple watch",
+CatalogCategory: "Electronics",
+Description: "Monitor your health. Track your workouts. Get the motivation you need to achieve your fitness goals. And stay connected to the people and information you care about. With Apple Watch Series 3, you can do it all — right from your wrist",
+Rating: 0,
+ImageURL: "../resources/images/applewatch.jpg"
+},
+{
+ItemCode: 'E_003',
+ItemName: "Apple 4k Tv",
+CatalogCategory: "Electronics",
+Description: "Immerse yourself in billions of mesmerizing colors and crisp, vivid imagery on our stunning Samsung TV.",
+Rating: 0,
+ImageURL: "../resources/images/samsung1.jpg"
+}
+]);
+
+
+//user saved items database
+db.userItemData.insertMany([
+{
+userId:'user001',
+item : {
+ItemCode: 'B_001',
+ItemName: "The Odyssey by Homer",
+CatalogCategory: "Books",
+Description: "The Iliad and the Odyssey can be found on every list of the world's greatest books. From the beginning of Western literature, readers have appreciated these two epic poems for their ability to make us reflect on the full range of human concerns and emotions as well as for sheer entertainmen",
+Rating: "0",
+ImageURL: "../resources/images/odyssey.jpg"
+},
+rating :0 ,
+purchasedIt : 'Yes'
+},
+{
+userId:'user001',
+item : {
+ItemCode:'E_001',
+ItemName: "Apple Air pods",
+CatalogCategory: "Electronics",
+Description: "Amazingly easy to use, AirPods combine intelligent design with breakthrough technology and crystal clear sound.Get up to 5 hours of listening time on one charge Or up to 3 hours with just a 15-minute charge in the charging case..",
+Rating: 0,
+ImageURL: "../resources/images/Appleairpods.jpg"
+},
+rating : 0,
+purchasedIt : 'Yes'
+},
+{
+userId:'user002',
+item : {
+ItemCode:'B_003',
+ItemName: "Ulysses by James Joyce",
+CatalogCategory: "Books",
+Description: "Ulysses is a novel by Irish writer James Joyce. It was first serialised in parts in the American journal The Little Review from March 1918 to December 1920, and then published in its entirety by Sylvia Beach in February 1922, in Paris. It is considered to be one of the most important works of Modernist literature, and has been called a demonstration and summation of the entire movement",
+Rating: 0,
+ImageURL: "../resources/images/ulysses.jpeg"
+},
+rating : 0,
+purchasedIt : 'Yes'
+},
+{
+userId:'user002',
+item : {
+ItemCode: 'E_003',
+ItemName: "Apple 4k Tv",
+CatalogCategory: "Electronics",
+Description: "Immerse yourself in billions of mesmerizing colors and crisp, vivid imagery on our stunning Samsung TV.",
+Rating: 0,
+ImageURL: "../resources/images/samsung1.jpg"
+},
+rating : 0,
+purchasedIt : 'No'
+}
+]);

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- header-->
+<% include partials/header.ejs %>
+
+
+  <!--site navigation-->
+  <% include partials/site-navigation.ejs %>
+
+  <!-- user navigation-->
+  <% include partials/user-navigation.ejs %>
+  <div class="ver content">
+     <a href="/index">Home</a> > Categories
+     <!--
+     <h2>Categories</h2>
+     <ul>
+       <h3>Books</h3>
+      <ul>
+      <li><a  href="/item?itemCode=B_001">The Odyssey by Homer</a></li>
+      <li><a href="/item?itemCode=B_002">Hamlet by William Shakespeare</a></li>
+      <li><a href="/item?itemCode=B_003">Ulysses by James Joyce</a></li>
+  </ul>
+  <h3>Electronics</h3>
+   <ul>
+      <li><a href="/item?itemCode=E_001">Apple Airpods</a></li>
+      <li><a href="/item?itemCode=E_002">Apple watch</a></li>
+      <li><a href="/item?itemCode=E_003">Samsung 4k TV</a></li>
+  </ul>
+ </div>
+-->
+<!--
+<%var categoryList=[];
+data.list.forEach(function(item){
+  if(!categoryList.includes(data.CatalogCategory))
+  {
+    categoryList.push(data.CatalogCategory);
+  }
+});
+while(categoryList.length!=0)
+{
+var currentCategory=categoryList[0];
+
+categoryList.splice(0,1);
+%>
+
+	<h3><%=currentCategory%></h3>
+  <%data.list.forEach(function(item){
+                  if(item.CatalogCategory === currentCategory){%>
+  <a href="/itemID?ItemCode=<%=item.ItemCode%>"><%=item.ItemName%></a><br/>
+  <%}%>
+  <%})}%>
+-->
+
+<div class="c1">
+  <h2><%= data.list[0]%></h2>
+  <ul>
+    <% for(var i = 0; i< data.items.length; i++ ){
+      if(data.list[0] == data.items[i].CatalogCategory){%>
+        <li>
+        <a href="/categories/item?item-code=<%= data.items[i].ItemCode%>"><%= data.items[i].ItemName%></a></li>
+
+      <%}
+    }%>
+  </ul>
+</div>
+<div class="c2">
+  <h2><%= data.list[1]%></h2>
+  <ul>
+    <% for(var j = 0; j< data.items.length; j++ ){
+      if(data.list[1] == data.items[j].CatalogCategory){%>
+        <li>
+        <a href="/categories/item?item-code=<%= data.items[j].ItemCode%>"><%= data.items[j].ItemName%></a></li>
+
+      <%}
+    }%>
+  </ul>
+</div>
+
+
+</div>
+<%include partials/footer.ejs%>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+
+<nav id="hornav">
+        <ul>
+          <% if(username.length !== 0){%>
+            <li><a href="/user/signout">Sign Out |</a></li>
+
+          <% }else{ %>
+            <li><a href="/user/signin" >Sign In |</a></li>
+            <% } %>
+          <li><a href="/profile/myItems">My Items |</a></li>
+          <li><a href="#ct">Cart</a></li>
+        </ul>
+</nav>

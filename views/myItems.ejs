@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<!-- header-->
+<% include partials/header.ejs %>
+
+
+
+<!--site navigation-->
+<% include partials/site-navigation.ejs %>
+
+<!-- user navigation-->
+<% include partials/user-navigation.ejs %>
+<div class="ver content">
+           <h2>Wallmart MyItems List</h2>
+
+           <table>
+             <tr>
+               <th>ItemName</th>
+               <th>Category</th>
+               <th>My Rating</th>
+               <th>Purchased</th>
+               <th></th>
+               <th></th>
+             </tr>
+             <% for(let i=0;i<userItems.length;i++){ %>
+             <tr>
+               <td>
+                 <ul class="my-item-tag">
+                   <%if (userItems[i].purchasedIt === "true") {%>  <li><img  alt="my tag image" class="my-tag" src="../resources/images/logo.png" /></li>  <%}%>
+                   <li><a href=""> <%= userItems[i].item.ItemName%> </a></li>
+                 </ul>
+               </td>
+               <td><%= userItems[i].item.CatalogCategory %></td>
+               <td>
+                 <ul class="ratings-bar">
+                   <% let stars = parseInt(userItems[i].rating);
+                     for(let i=0; i<stars ; i++) {
+                   %>
+                      <li> <img alt="star" class="star" src="../resources/images/star-image.png" /> </li>
+                    <% } %>
+                 </ul>
+               </td>
+               <td>
+                 <%if (userItems[i].purchasedIt == "Yes") {%> <input type="checkbox" class="tested-checkbox" name="tested" value="tested" checked  readonly>
+                 <% }else{%> <input type="checkbox" class="tested-checkbox" name="tested" value="tested" readonly> <%}%>
+               </td>
+               <td>
+                 <form action="/feedback">
+                   <input type="hidden" name="item-code" value="<%= userItems[i].item.ItemCode %>" />
+                   <button class="button1" type= "submit" >Update</button>
+                 </form>
+               </td>
+               <td>
+                 <form action="/profile/delete" method="post">
+                   <input type="hidden" name="item-code" value="<%= userItems[i].item.ItemCode %>"  />
+                   <button class="button1" type= "submit" >Delete</button>
+                 </form>
+               </td>
+             </tr>
+             <% } %>
+           </table>
+
+  <h3>Legend</h3>
+    <span><img src="../resources/images/review.png" alt="review" style="width:20px;height:20px"/></span><span>--->Redirect to reviews Page</span><br>
+
+    <span><img src="../resources/images/logo.png" alt="Logo" style="width:20px;height:20px" /></span><span>--->indicates that this item belongs to you</span><br>
+    <p>Click<a href="#share"> here </a>to share a new item</p>
+  </div>
+
+
+    <%include partials/footer.ejs%>
+
+    </body>
+    </html>

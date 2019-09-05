@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<!-- header-->
+<% include partials/header.ejs %>
+
+
+
+<!--site navigation-->
+<% include partials/site-navigation.ejs %>
+
+<!-- user navigation-->
+<% include partials/user-navigation.ejs %>
+ <div class="ver content">
+
+<h4><a href="/index">Home</a> > <a href="/categories">Categories </a>> <%= item.ItemName %></h4>
+<h2><img src="<%= item.ImageURL %>" alt="Electronics"/><B><%= item.CatalogCategory %></B></h2>
+<div><h1><%= item.ItemName %></h1><br/>
+<p><%= item.Description %></p></div>
+<button type="button" onclick="location.href='/profile/save?item-code=<%= item.ItemCode%>';">Save to My Items List</button> <button type="button" onclick="location.href='/feedback?item-code=<%= item.ItemCode %>';">Rate It!</button>
+<button type="button" onclick="location.href='/categories';">Back!</button>
+
+</div>
+
+
+<%include partials/footer.ejs%>
+
+</body>
+</html>
